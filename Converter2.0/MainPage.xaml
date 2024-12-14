@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:y="clr-namespace:Converter2._0"
+             x:Class="Converter2._0.MainPage">
+
+    <ContentPage.BindingContext>
+        <y:ConverterViewModel></y:ConverterViewModel>
+    </ContentPage.BindingContext>
+
+    <VerticalStackLayout>
+        <DatePicker MinimumDate="01/01/2000" x:Name="DateSelector" Date="{Binding SelectedDate}" IsEnabled="{Binding IsAvailable}"/>
+
+        <HorizontalStackLayout>
+            <Picker ItemsSource="{Binding Currencies}" SelectedItem="{Binding SelectedFromCurrency}" IsEnabled="{Binding IsAvailable}" />
+            <Entry Text="{Binding InputAmount}" IsEnabled="{Binding IsAvailable}"/>
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout>
+            <Picker ItemsSource="{Binding Currencies}" SelectedItem="{Binding SelectedToCurrency}" IsEnabled="{Binding IsAvailable}" />
+            <Entry IsReadOnly="True" Text="{Binding ConvertedAmount}" IsEnabled="{Binding IsAvailable}"/>
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+
+</ContentPage>
